@@ -19,4 +19,4 @@ streamlit==1.38.0
 redis
 langsmith==0.0.49
 pdfminer.six
-pip install faiss
+faiss-cpu
