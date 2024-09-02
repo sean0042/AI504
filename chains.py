@@ -62,7 +62,7 @@ def get_retreiver_chain(vector_store):
 
 
 def get_conversational_rag(history_retriever_chain):
-  llm=ChatOpenAI(model = "gpt-4o", temperature = 0)
+  llm=ChatOpenAI(model = "gpt-4o-mini", temperature = 0)
   answer_prompt=ChatPromptTemplate.from_messages([
       ("system",system_prompt+"\n\n{context}"),
       MessagesPlaceholder(variable_name="chat_history"),
