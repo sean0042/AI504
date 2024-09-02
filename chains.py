@@ -10,6 +10,7 @@ from langchain.chains import create_history_aware_retriever, create_retrieval_ch
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.tracers.context import collect_runs
 from streamlit_feedback import streamlit_feedback
+from langchain.retrievers import BM25Retriever, EnsembleRetriever 
 import streamlit as st
 from langsmith import Client
 from langsmith import traceable
@@ -36,17 +37,27 @@ def get_vector_store():
 
 def get_retreiver_chain(vector_store):
   llm=ChatOpenAI(model = "gpt-4o-mini", temperature = 0)
-  retriever = vector_store.as_retriever(
-    search_type="mmr",
-    search_kwargs={"k": 3},
+
+  faiss_retriever = vector_store.as_retriever(
+    search_kwargs={"k": 2},
   )
+  bm25_retriever = BM25Retriever.from_documents(
+     st.session_state.docs
+  )
+  bm25_retriever.k = 2
+
+  ensemble_retriever = EnsembleRetriever(
+      retrievers=[bm25_retriever, faiss_retriever],
+  )
+  
   prompt = ChatPromptTemplate.from_messages([
       MessagesPlaceholder(variable_name="chat_history"),
       ("user","{input}"),
       ("user","Given the above conversation, generate a search query to look up in order to get information relevant to the conversation")
   ])
-  history_retriver_chain = create_history_aware_retriever(llm,retriever,prompt)
+  history_retriver_chain = create_history_aware_retriever(llm,ensemble_retriever,prompt)
   return history_retriver_chain
+
 
 
 

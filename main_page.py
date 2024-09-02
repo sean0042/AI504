@@ -5,6 +5,8 @@ from langchain_core.tracers.context import collect_runs
 from langsmith import Client
 from langsmith import traceable
 from streamlit_feedback import streamlit_feedback
+from utils import load_docs_from_jsonl
+
 client = Client()
 
 def main_page():
@@ -31,6 +33,8 @@ def main_page():
         st.session_state.chat_history = []   
     if "vector_store" not in st.session_state:
         st.session_state.vector_store = get_vector_store()
+    if "doc" not in st.session_state:
+        st.session_state.docs = load_docs_from_jsonl("docs/20240902.jsonl")
 
     for message in st.session_state.chat_history:
         if isinstance(message,AIMessage):
@@ -47,7 +51,7 @@ def main_page():
         response = conversation_rag_chain.invoke({
             "chat_history":st.session_state.chat_history,
             "input":user_input,
-            "student_id" : "20218179"
+            "student_id" : st.session_state.student_id
         })
         return response["answer"]
 
@@ -62,6 +66,19 @@ def main_page():
                 st.session_state.chat_history.append(HumanMessage(content=user_input))
                 st.session_state.chat_history.append(AIMessage(content=response))
             st.session_state.run_id = cb.traced_runs[0].id
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     feedback_option = "thumbs"
     if st.session_state.get("run_id"):
