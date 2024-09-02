@@ -1,0 +1,6 @@
+*.ipynb
+.streamlit
+.env
+past_documents/
+todo_documents/
+__pycache__
