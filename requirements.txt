@@ -20,3 +20,4 @@ redis
 langsmith==0.1.17
 pdfminer.six
 faiss-cpu
+streamlit-feedback
