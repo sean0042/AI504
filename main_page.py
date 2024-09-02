@@ -91,7 +91,7 @@ def main_page():
 
         # Define score mappings for both "thumbs" and "faces" feedback systems
         score_mappings = {
-            "thumbs": {"👍": 1, "👎": 0},
+            "thumbs": {"👍": 1, "👎": -1},
             "faces": {"😀": 1, "🙂": 0.75, "😐": 0.5, "🙁": 0.25, "😞": 0},
         }
 
