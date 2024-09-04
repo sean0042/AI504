@@ -9,7 +9,7 @@ from utils import load_docs_from_jsonl
 
 client = Client()
 
-def main_page():
+def second_page():
     st.header("AI504 Chatbot")
 
     col1, col2 = st.columns([1, 1])

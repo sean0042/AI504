@@ -1,6 +1,7 @@
 import streamlit as st
-from home_page import home_page
-from main_page import main_page
+
+from first_page import *
+from second_page import *
 import os
 
 os.environ["LANGCHAIN_API_KEY"] = st.secrets["LANGCHAIN_API_KEY"]
@@ -10,9 +11,9 @@ os.environ["LANGCHAIN_PROJECT"] = "tmp"
 
 def main():
     if "student_id" not in st.session_state:
-        home_page()
+        first_page()
     else:
-        main_page()
+        second_page()
 
 if __name__ == "__main__":
     main()

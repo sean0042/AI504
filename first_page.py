@@ -1,6 +1,6 @@
 import streamlit as st
 
-def home_page():
+def first_page():
     st.image("./asset/kaist.png", width=300)
     st.title("KAIST AI504 Virtual TA")
 
@@ -13,6 +13,7 @@ def home_page():
     - There is a rate limit on GPT-4 usage. Please be mindful of your usage to ensure that all students have an equal opportunity to benefit from this tool.
     - **Student IDs found to be using this tool for purposes other than for the AI 504 course, or with abnormally high usage, may have their access revoked.**
     - Conversations with the Virtual TA will be stored and can be used for research purposes. However, your student ID will be thoroughly anonymized. **Do not** include any identifying information in your conversations.
+    - Since the model may hallucinate, for matters directly related to grades (e.g., project submission deadlines), be sure to check the relevant documents directly or contact the TA.
     - By using this Virtual TA, you agree to these terms and conditions.
     """)
 
