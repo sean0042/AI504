@@ -4,7 +4,8 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate,MessagesPlaceholder
 from langchain.chains import create_history_aware_retriever, create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
-from langchain.retrievers import BM25Retriever, EnsembleRetriever 
+from langchain_community.retrievers import BM25Retriever
+from langchain.retrievers import EnsembleRetriever
 import streamlit as st
 
 
@@ -22,10 +23,9 @@ SYSTEM_PROMPT = (
 
 def get_vector_store():
     # Load a local FAISS vector store
-
     vector_store = FAISS.load_local(
         "./faiss_db/", 
-        embeddings = OpenAIEmbeddings(model = "text-embedding-3-small"), 
+        embeddings = OpenAIEmbeddings(model = "text-embedding-3-large"), 
         allow_dangerous_deserialization = True)
     
     return vector_store
@@ -33,29 +33,27 @@ def get_vector_store():
 
 
 def get_retreiver_chain(vector_store):
-    # This function takes a vector store as input and returns a retriever chain that is aware of conversation history.
-    # It combines FAISS and BM25 retrievers for more effective information retrieval.
 
     llm = ChatOpenAI(model = "gpt-4o-mini", temperature = 0)
 
     faiss_retriever = vector_store.as_retriever(
-       search_kwargs={"k": 2},
+       search_kwargs={"k": 3},
     )
-    bm25_retriever = BM25Retriever.from_documents(
-       st.session_state.docs
-    )
-    bm25_retriever.k = 2
+    # bm25_retriever = BM25Retriever.from_documents(
+    #    st.session_state.docs
+    # )
+    # bm25_retriever.k = 2
 
-    ensemble_retriever = EnsembleRetriever(
-        retrievers = [bm25_retriever, faiss_retriever],
-    )
+    # ensemble_retriever = EnsembleRetriever(
+    #     retrievers = [bm25_retriever, faiss_retriever],
+    # )
 
     prompt = ChatPromptTemplate.from_messages([
         MessagesPlaceholder(variable_name = "chat_history"),
         ("user","{input}"),
-        ("user","Given the above conversation, generate a search query to look up in order to get information relevant to the conversation")
+        ("user","Based on the conversation above, generate a search query that retrieves relevant information. Provide enough context in the query to ensure the correct document is retrieved. Only output the query.")
     ])
-    history_retriver_chain = create_history_aware_retriever(llm, ensemble_retriever, prompt)
+    history_retriver_chain = create_history_aware_retriever(llm, faiss_retriever, prompt)
 
     return history_retriver_chain
 

@@ -1,11 +1,11 @@
 import streamlit as st
 from chains import get_vector_store, get_retreiver_chain, get_conversational_rag
-from langchain_core.messages import ChatMessage,HumanMessage,AIMessage
+from langchain_core.messages import HumanMessage,AIMessage
 from langchain_core.tracers.context import collect_runs
 from langsmith import Client
-from langsmith import traceable
 from streamlit_feedback import streamlit_feedback
 from utils import load_docs_from_jsonl
+import uuid
 
 client = Client()
 
@@ -16,16 +16,15 @@ def second_page():
 
     with col1:
         if st.button("Go to Home", key="home_page"):
-
             st.session_state.pop("student_id", None)
             st.session_state.pop("chat_history", None)
-
+            st.session_state.pop("dialog_identifier", None)
             st.rerun()
 
     with col2:
         if st.button("Refresh", key="refresh"):
             st.session_state.pop("chat_history", None)
-
+            st.session_state.pop("dialog_identifier", None)
             st.rerun()
 
 
@@ -33,8 +32,11 @@ def second_page():
         st.session_state.chat_history = []   
     if "vector_store" not in st.session_state:
         st.session_state.vector_store = get_vector_store()
-    if "doc" not in st.session_state:
-        st.session_state.docs = load_docs_from_jsonl("docs/20240902.jsonl")
+    if "dialog_identifier" not in st.session_state:
+        st.session_state.dialog_identifier = uuid.uuid4()
+    # if "doc" not in st.session_state:
+    #     st.session_state.docs = load_docs_from_jsonl("docs/doc.jsonl")
+
 
     for message in st.session_state.chat_history:
         if isinstance(message,AIMessage):
@@ -51,7 +53,8 @@ def second_page():
         response = conversation_rag_chain.invoke({
             "chat_history":st.session_state.chat_history,
             "input":user_input,
-            "student_id" : st.session_state.student_id
+            "student_id" : st.session_state.student_id,
+            "dialog_identifier" : st.session_state.dialog_identifier
         })
         return response["answer"]
 
@@ -68,51 +71,32 @@ def second_page():
             st.session_state.run_id = cb.traced_runs[0].id
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     feedback_option = "thumbs"
     if st.session_state.get("run_id"):
         run_id = st.session_state.run_id
         feedback = streamlit_feedback(
-            feedback_type="thumbs",
-            optional_text_label="[Optional] Please provide an explanation",
+            feedback_type = "thumbs",
+            optional_text_label ="[Optional] Please provide an explanation",
             key=f"feedback_{run_id}",
         )
 
-        # Define score mappings for both "thumbs" and "faces" feedback systems
         score_mappings = {
             "thumbs": {"👍": 1, "👎": -1},
             "faces": {"😀": 1, "🙂": 0.75, "😐": 0.5, "🙁": 0.25, "😞": 0},
         }
 
-        # Get the score mapping based on the selected feedback option
         scores = score_mappings[feedback_option]
 
         if feedback:
-            # Get the score from the selected feedback option's score mapping
             score = scores.get(feedback["score"])
 
             if score is not None:
-                # Formulate feedback type string incorporating the feedback option
-                # and score value
                 feedback_type_str = f"{feedback_option} {feedback['score']}"
 
-                # Record the feedback with the formulated feedback type string
-                # and optional comment
                 feedback_record = client.create_feedback(
                     run_id,
                     feedback_type_str,
-                    score=score,
+                    score = score,
                     comment=feedback.get("text"),
                 )
                 st.session_state.feedback = {
