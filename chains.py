@@ -17,7 +17,7 @@ SYSTEM_PROMPT = (
     "On top of each context, there is a tag (e.g., '01_numpy.pdf') that indicates its source."
     "For example, '01_numpy.pdf' refers to the lecture material for the first week, and '01_numpy.ipynb' refers to the practice materials from the same week."
     "You may choose to answer without using the context if it is unnecessary."
-    "However, if you do use the context, make sure to cite the source (noted at the beginning of each context) in your response.\nContext:"
+    "However, if you do use the context, make sure to cite the sources (noted at the beginning of each context) you used in your response.\nContext:"
 )
 
 
@@ -37,7 +37,7 @@ def get_retreiver_chain(vector_store):
     llm = ChatOpenAI(model = "gpt-4o-mini", temperature = 0)
 
     faiss_retriever = vector_store.as_retriever(
-       search_kwargs={"k": 3},
+       search_kwargs={"k": 5},
     )
     # bm25_retriever = BM25Retriever.from_documents(
     #    st.session_state.docs
