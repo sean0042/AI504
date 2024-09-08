@@ -5,6 +5,8 @@ from langchain_core.tracers.context import collect_runs
 from langsmith import Client
 from streamlit_feedback import streamlit_feedback
 from utils import load_docs_from_jsonl
+from langchain_community.document_loaders.csv_loader import CSVLoader
+
 import uuid
 
 client = Client()
