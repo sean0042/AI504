@@ -22,3 +22,5 @@ pdfminer.six
 faiss-cpu
 streamlit-feedback
 rank_bm25
+rich==13.7.1
+pydantic==2.9.2
