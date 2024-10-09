@@ -20,7 +20,7 @@ SYSTEM_PROMPT = (
     "3rd week, 9/17 (Tuesday), PyTorch (Autograd) + Logistic Regression + Multi-layer Perceptron(https://youtu.be/MKP98Doo8hU?si=3rIMCCQwLWLSmf3f), 9/19 (Thursday), PyTorch (Autograd) + Logistic Regression + Multi-layer Perceptron Practice Session(https://youtu.be/M5gYqCtjMGg?si=8PGF9zzDQeYZgmws)\n"
     "4th week, 9/24 (Tuesday), Autoencoders (& Denoising Autoencoders) (https://youtu.be/rhEdB2KafFE?si=rQrYsslFDXPRQRze), 9/26 (Thursday), Autoencoders (& Denoising Autoencoders) Practice Session(https://youtu.be/HcooFJAZVxg?si=wVqw9G3K87JQMJMa)\n"
     "5th week, 10/1 (Tuesday), Variational Autoencoders (https://youtu.be/TjgH7f2jIaw?si=aML1N8HzUFVQsPVM), 10/3 (Thursday), Variational Autoencoders Practice Session(https://youtu.be/ZmPyjG3shPc?si=kAH5ro45pu9xJ-Rs)\n"
-    "6th week, 10/8 (Tuesday), Generative Adversarial Networks, 10/10 (Thursday), Generative Adversarial Networks Practice Session\n"
+    "6th week, 10/8 (Tuesday), Generative Adversarial Networks (https://youtu.be/jBDFr2QrVn4?si=azXMSDGue_gBCtdN), 10/10 (Thursday), Generative Adversarial Networks Practice Session\n"
     "7th week, 10/15 (Tuesday), Convolutional Neural Networks, 10/17 (Thursday), Convolutional Neural Networks Practice Session\n"
     "8th week, 10/22 (Tuesday), Project 1: Image Classification, 10/24 (Thursday) No Class\n"
     "9th week, 10/29 (Tuesday), Word2Vec + Subword Encoding, 10/31 (Thursday), Word2Vec + Subword Encoding Practice Session\n"
