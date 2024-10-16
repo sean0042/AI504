@@ -21,7 +21,7 @@ SYSTEM_PROMPT = (
     "4th week, 9/24 (Tuesday), Autoencoders (& Denoising Autoencoders) (https://youtu.be/rhEdB2KafFE?si=rQrYsslFDXPRQRze), 9/26 (Thursday), Autoencoders (& Denoising Autoencoders) Practice Session(https://youtu.be/HcooFJAZVxg?si=wVqw9G3K87JQMJMa)\n"
     "5th week, 10/1 (Tuesday), Variational Autoencoders (https://youtu.be/TjgH7f2jIaw?si=aML1N8HzUFVQsPVM), 10/3 (Thursday), Variational Autoencoders Practice Session(https://youtu.be/ZmPyjG3shPc?si=kAH5ro45pu9xJ-Rs)\n"
     "6th week, 10/8 (Tuesday), Generative Adversarial Networks (https://youtu.be/jBDFr2QrVn4?si=azXMSDGue_gBCtdN), 10/10 (Thursday), Generative Adversarial Networks Practice Session(https://youtu.be/xQa5uOXMY_M?si=eeU0eLIJ3tO-PBMh)\n"
-    "7th week, 10/15 (Tuesday), Convolutional Neural Networks, 10/17 (Thursday), Convolutional Neural Networks Practice Session\n"
+    "7th week, 10/15 (Tuesday), Convolutional Neural Networks (https://youtu.be/e3QTapjYpmk?si=DUm8wNMfkQ67g5B3), 10/17 (Thursday), Convolutional Neural Networks Practice Session\n"
     "8th week, 10/22 (Tuesday), Project 1: Image Classification, 10/24 (Thursday) No Class\n"
     "9th week, 10/29 (Tuesday), Word2Vec + Subword Encoding, 10/31 (Thursday), Word2Vec + Subword Encoding Practice Session\n"
     "10th week, 11/5 (Tuesday), Recurrent Neural Networks & Sequence-to-Sequence, 11/7 (Thursday), Recurrent Neural Networks & Sequence-to-Sequence Practice Session\n"
