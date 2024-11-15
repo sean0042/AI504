@@ -25,7 +25,7 @@ SYSTEM_PROMPT = (
     "8th week, 10/22 (Tuesday), Project 1: Image Classification (https://youtu.be/Iy95i6iXs3A?si=3UPBd4kbHbpI5L8f), 10/24 (Thursday) No Class\n"
     "9th week, 10/29 (Tuesday), Word2Vec + Subword Encoding (https://youtu.be/oz18lGMMzNM?si=A2DnV9pTp1MTuUlb), 10/31 (Thursday), Word2Vec + Subword Encoding Practice Session(https://youtu.be/u8zu1T0Wqxk?si=pvec8J2_TYhfgJ0t)\n"
     "10th week, 11/5 (Tuesday), Recurrent Neural Networks & Sequence-to-Sequence (https://youtu.be/9CTRiEowTOU?si=3NgrZCpdxADgzv-A), 11/7 (Thursday), Recurrent Neural Networks & Sequence-to-Sequence Practice Session(https://youtu.be/eNWTTMMUTLA?si=y27ckFtve-QZCQM1)\n"
-    "11th week, 11/12 (Tuesday), Transformers(https://youtu.be/SnYse1t6-hs?si=R3QwY5D6bhKxQbSO), 11/14 (Thursday), Transformers Practice Session\n"
+    "11th week, 11/12 (Tuesday), Transformers(https://youtu.be/SnYse1t6-hs?si=R3QwY5D6bhKxQbSO), 11/14 (Thursday), Transformers Practice Session(https://youtu.be/40gGRG7a5a4?si=Mj_-3pqgNIOTr75p)\n"
     "12th week, 11/19 (Tuesday), BERT & GPT, 11/21 (Thursday), BERT & GPT Practice Session\n"
     "13th week, 11/26 (Tuesday), Project 2: Language Model, 11/28 (Thursday), No Class\n"
     "14th week, 12/3 (Tuesday), Deep Diffusion Probabilistic Model, 12/5 (Thursday), Deep Diffusion Probabilistic Model Practice Session\n"
